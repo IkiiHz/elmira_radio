@@ -1,0 +1,1898 @@
+/* File: elmira_radio/assets/css/style.css */
+
+/* :root mendefinisikan variabel CSS global */
+:root {
+    --primary-color: #FF5722; /* Deep Orange - Main Accent */
+    --secondary-color: #121212; /* Very Dark Grey - Main Background */
+    --accent-color-bright: #03DAC6; /* Teal - Secondary Accent */
+    --accent-color-text: #FFFFFF; /* White for prominent text or icons */
+
+    --text-color: #E0E0E0; /* Light Grey - General Text */
+    --text-secondary: #B0B0B0; /* Medium Grey - Secondary Text */
+
+    --card-bg: #1E1E1E; /* Dark Grey - Card Backgrounds */
+    --hover-color: #282828; /* Subtle Hover for cards/interactive elements */
+    --focus-ring-color: rgba(255, 87, 34, 0.3); /* Primary color with alpha for focus rings */
+
+    --border-color: #333333; /* Subtle borders */
+    --border-color-light: #444444; /* Slightly lighter border for internal elements */
+    --hover-color-table: #2a2a2a; /* Hover for table rows */
+
+
+    --error-color: #CF6679; /* Material Dark Theme Error Color */
+    --success-color: #66BB6A; /* Material Green */
+    --warning-color: #ffc107; /* Bootstrap Yellow for warning */
+    --info-color: #17a2b8; /* Bootstrap Info Blue/Teal */
+    --info-color-alt: #fd7e14; /* Orange for specific info states */
+    --cyan-color: #20c997; /* Cyan/Teal alternative */
+    --blue-color: #007bff; /* Standard Blue */
+    --secondary-dark-color: #6c757d; /* Bootstrap Secondary Grey */
+
+
+    --font-main: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    --font-heading: 'Lexend Deca', 'Segoe UI', 'Roboto', sans-serif;
+
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
+    --box-shadow-light: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); /* Dari Owner Dashboard */
+}
+
+/* === RESET DASAR & BODY === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* === HEADER & NAVIGASI === */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--card-bg);
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    height: 80px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+nav ul li {
+    margin-left: 0; /* Tidak ada margin kiri antar item jika tidak perlu */
+}
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1.5rem 1.2rem;
+    display: block;
+    position: relative;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 1rem;
+    left: 1.2rem;
+    right: 1.2rem;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+nav ul li a:hover,
+nav ul li a.active {
+    color: var(--primary-color);
+}
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    transform: scaleX(1);
+}
+
+/* === HERO SECTION === */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('../images/radio-bg.jpg'); /* Pastikan path gambar benar */
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--accent-color-text);
+}
+.hero-content {
+    max-width: 800px;
+    padding: 2rem;
+    animation: fadeIn 1s ease-out;
+}
+.hero .logo-large {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: 3.8rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+.hero p {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    color: var(--text-secondary); /* Menggunakan variabel text-secondary agar konsisten dengan tema */
+    font-weight: 300;
+}
+.btn-live {
+    background-color: var(--primary-color);
+    color: var(--accent-color-text);
+    padding: 0.9rem 2.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-block;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 87, 34, 0.3);
+}
+.btn-live:hover {
+    background-color: #FF7043; /* Warna hover spesifik atau bisa var(--primary-color-hover) jika ada */
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 87, 34, 0.5);
+}
+
+/* === FEATURES SECTION === */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 4rem 2rem;
+    background-color: var(--secondary-color); /* Bisa juga tanpa background jika ingin sama dengan body */
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.feature {
+    text-align: center;
+    width: 30%; /* Di desktop, bisa menjadi 3 kolom */
+    min-width: 280px; /* Lebar minimum sebelum wrap */
+    padding: 2.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    margin: 1rem 0; /* Atau hapus jika gap sudah cukup */
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+.feature:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+.feature i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+.feature h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+}
+.feature p {
+    color: var(--text-secondary);
+}
+
+/* === NOW PLAYING (INDEX) & UPCOMING SHOWS === */
+.now-playing, .upcoming-shows {
+    padding: 4rem 2rem;
+    background-color: var(--secondary-color); /* Atau inherit dari body */
+    text-align: center;
+}
+.now-playing h2, .upcoming-shows h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    color: var(--accent-color-text); /* Warna judul section */
+}
+
+/* Player di halaman utama (index.php) */
+.player { /* Player utama di index.php */
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 2.5rem;
+    max-width: 800px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+.player .song-info { /* Info lagu di player index.php */
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+.player .album-cover { /* Cover album di player index.php */
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    margin-right: 1.5rem;
+    object-fit: cover;
+    box-shadow: var(--shadow-sm);
+}
+.player .player-controls { /* Kontrol di player index.php */
+    display: flex;
+    align-items: center;
+    width: 60%; /* Sesuaikan jika perlu */
+}
+.player .play-btn { /* Tombol play/pause di player index.php */
+    background-color: var(--primary-color);
+    color: var(--accent-color-text);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: none;
+    margin-right: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+.player .play-btn:hover {
+    transform: scale(1.1);
+    background-color: #FF7043; /* Warna hover spesifik */
+    box-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+}
+.player .progress-bar { /* Progress bar di player index.php */
+    flex-grow: 1;
+    height: 8px;
+    background-color: var(--border-color);
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+.player .progress { /* Progress di dalam progress bar player index.php */
+    position: absolute;
+    height: 100%;
+    width: 30%; /* Diatur oleh JavaScript */
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    transition: width 0.1s linear;
+}
+
+/* Upcoming Shows Grid (index.php) */
+.shows-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.show-card { /* Kartu acara mendatang di index.php */
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.show-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+.show-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+    color: var(--primary-color);
+}
+.show-card p {
+    margin: 0.4rem 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    flex-grow: 1;
+}
+.show-card i {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+/* === STREAMING PAGE === */
+.streaming-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Default untuk desktop */
+    gap: 2.5rem;
+    padding: 2rem 0; /* Padding atas/bawah, 0 untuk kiri/kanan agar max-width bekerja */
+    max-width: 1300px; /* Batas lebar maksimum */
+    margin: 0 auto; /* Pusatkan kontainer */
+}
+.streaming-player { /* Kontainer utama player di streaming.php */
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+.streaming-player h2 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-align: center; /* Ditambahkan dari inline style */
+}
+.player-wrapper { /* Wrapper untuk audio element dan custom controls */
+    margin-bottom: 1.5rem; /* Ditambahkan dari inline style, disesuaikan dari 2.5rem */
+}
+.player-wrapper audio { /* Elemen audio HTML5 */
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 8px; /* Disesuaikan dari 5px */
+    filter: invert(1) hue-rotate(180deg) contrast(0.8) brightness(1.2); /* Filter tema gelap, opsional */
+    /* background-color: #000; /* Dihapus karena filter sudah cukup atau sesuaikan */
+}
+.controls-container, .audio-controls { /* Kontrol kustom audio di streaming.php */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ditambahkan dari inline style */
+    gap: 1rem; /* Ditambahkan dari inline style, disesuaikan dari 10px */
+    margin-bottom: 1.5rem; /* Dihapus dari sini, karena player-wrapper sudah punya margin bawah */
+    margin-top: 10px; /* Ditambahkan dari inline style */
+}
+.control-btn { /* Tombol play/pause, mute di streaming.php */
+    background-color: var(--primary-color);
+    color: var(--accent-color-text);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-sm);
+}
+.control-btn:hover {
+    background-color: #FF7043;
+    transform: scale(1.1);
+    box-shadow: 0 0 8px rgba(255, 87, 34, 0.4);
+}
+#volume-control {
+    width: 120px;
+    cursor: pointer;
+    accent-color: var(--primary-color); 
+    background: transparent;
+}
+#volume-control::-webkit-slider-runnable-track { height: 6px; background: var(--border-color); border-radius: 3px; }
+#volume-control::-moz-range-track { height: 6px; background: var(--border-color); border-radius: 3px; }
+#volume-control::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; background: var(--primary-color); border-radius: 50%; margin-top: -5px; }
+#volume-control::-moz-range-thumb { width: 16px; height: 16px; background: var(--primary-color); border-radius: 50%; border: none; }
+
+.now-playing-info { /* Info "Now Playing" di streaming.php */
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Jarak antara gambar dan teks info */
+    margin-top: 1.5rem; /* Disesuaikan dari 2.5rem */
+    background-color: var(--secondary-color); 
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-top: 1px solid var(--hover-color); /* Ditambahkan dari inline style */
+}
+.now-playing-info img { /* Cover album */
+    width: 100px; /* Disesuaikan dari 120px */
+    height: 100px; /* Disesuaikan dari 120px */
+    border-radius: 8px; /* Disesuaikan dari 10px */
+    /* margin-right: 2rem; Dihapus, gunakan gap pada parent */
+    object-fit: cover;
+    box-shadow: var(--shadow-md);
+}
+.now-playing-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    margin-top: 0; /* Hapus margin atas */
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+.now-playing-info p {
+    color: var(--text-secondary);
+    margin: 0.4rem 0;
+    font-size: 0.95rem;
+}
+.now-playing-info p#now-playing-penyiar { /* Spesifik untuk nama penyiar */
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+/* Fitur Samping di Streaming Page (Chat & Request) */
+.side-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Ditambahkan dari inline style, disesuaikan dari 2rem */
+}
+.chat-container, .song-request { /* Kontainer umum untuk chat dan song request */
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    /* margin-bottom: 2rem; Dihapus, gap pada parent .side-features sudah mengatur jarak */
+    border: 1px solid var(--border-color);
+}
+.chat-container:last-child, .song-request:last-child {
+    margin-bottom: 0; /* Hapus margin bawah untuk elemen terakhir di .side-features */
+}
+.chat-container h3, .song-request h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    display: flex; /* Untuk alignment ikon dan teks judul */
+    align-items: center;
+    gap: 0.5rem;
+}
+.chat-messages {
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+    padding: 1rem; /* Disesuaikan dari 1.5rem */
+    background-color: var(--secondary-color); 
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+.chat-messages::-webkit-scrollbar { width: 8px; }
+.chat-messages::-webkit-scrollbar-track { background: var(--secondary-color); border-radius: 4px; }
+.chat-messages::-webkit-scrollbar-thumb { background: var(--hover-color); border-radius: 4px; }
+.chat-messages::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
+
+.message {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--hover-color);
+    line-height: 1.4; /* Perbaiki spasi antar baris jika nama panjang */
+}
+.message:last-child {
+    border-bottom: none;
+}
+.message .username { /* Nama pengguna pengirim pesan, style dasar */
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+/* Warna spesifik username berdasarkan role (dari diskusi sebelumnya) */
+.message .username-pendengar { color: var(--accent-color-bright); }
+.message .username-penyiar { color: var(--primary-color); }
+.message .username-admin { color: var(--success-color); }
+
+.message .message-text { /* Teks pesan */
+    word-break: break-word; /* Agar pesan panjang tidak merusak layout */
+}
+.message .message-time {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    float: right; /* Tetap di kanan */
+    margin-left: 0.5rem; /* Jarak dari teks jika pesan pendek */
+}
+.chat-input {
+    display: flex;
+}
+.chat-input input {
+    flex: 1;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--border-color);
+    border-right: none;
+    border-radius: 25px 0 0 25px; 
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+.chat-input input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--focus-ring-color);
+}
+.chat-input button {
+    background-color: var(--primary-color);
+    color: var(--accent-color-text);
+    border: none;
+    padding: 0 1.8rem;
+    border-radius: 0 25px 25px 0; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+    display: inline-flex; /* Untuk alignment ikon */
+    align-items: center;
+    justify-content: center;
+}
+.chat-input button:hover {
+    background-color: #FF7043;
+}
+.login-prompt {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: 1.5rem;
+    padding: 10px; /* Ditambahkan dari inline style */
+}
+.login-prompt a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+.login-prompt a:hover {
+    text-decoration: underline;
+    color: #FF7043;
+}
+
+/* Form Song Request */
+.song-request form {
+    display: flex;
+    flex-direction: column;
+}
+.song-request input, .song-request textarea {
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px; 
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+.song-request input:focus, .song-request textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--focus-ring-color);
+}
+.song-request textarea {
+    resize: vertical;
+    min-height: 80px; /* Disesuaikan dari 60px jika perlu */
+}
+.song-request button { /* Tombol kirim request */
+    background-color: var(--primary-color);
+    color: var(--accent-color-text);
+    border: none;
+    padding: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 100%; /* Ditambahkan dari inline style */
+}
+.song-request button:hover {
+    background-color: #FF7043;
+    transform: translateY(-2px);
+}
+#streaming-request-feedback { /* Feedback untuk form request di streaming page */
+    margin-top:10px;
+    text-align: center; /* Agar pesan feedback terpusat */
+}
+
+
+/* === FORMULIR UMUM (Login, Register, Admin Forms, dll.) === */
+.form-group {
+    margin-bottom: 1.5rem; /* Disesuaikan dari 1.8rem */
+    position: relative;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.6rem;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--focus-ring-color);
+}
+.form-group select { 
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23B0B0B0' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem; 
+}
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px; /* Disesuaikan dari 120px */
+}
+.form-group small { /* Teks kecil di bawah input, misal di form admin */
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.85em;
+    color: var(--text-secondary);
+}
+
+/* Form container dengan background kartu (digunakan di admin, pesan_iklan, dll) */
+.form-container.card-bg { 
+    background-color: var(--card-bg); 
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+.form-container.card-bg h2, 
+.form-container.card-bg h3,
+.form-container.card-bg h4,
+.form-container.card-bg h5 { /* Judul di dalam form container */
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 1.5rem; /* Jarak setelah judul */
+}
+.form-container.card-bg p {
+    margin-bottom: 1rem; /* Jarak antar paragraf */
+}
+.form-container.card-bg ul {
+    margin-bottom: 1rem;
+    padding-left: 20px; /* Padding untuk list */
+}
+.form-container.card-bg .form-group {
+    margin-bottom: 1.2rem; /* Jarak form group di dalam card */
+}
+/* Input di dalam .form-container.card-bg sudah dicover oleh .form-group input */
+
+/* Form Group Inline (untuk admin/schedule.php) */
+.form-group-inline {
+    display: flex;
+    gap: 1.25rem; /* Disesuaikan dari 20px */
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem; 
+}
+.form-group-inline .form-group {
+    flex: 1;
+    min-width: 150px;
+    margin-bottom: 0; 
+}
+
+/* === HALAMAN OTENTIKASI (Login, Register) === */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    padding: 2.5rem 1rem; 
+}
+.auth-form {
+    background-color: var(--card-bg);
+    padding: 2.5rem; /* Disesuaikan dari 3rem */
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px; /* Disesuaikan dari 480px */
+    box-shadow: var(--shadow-lg); 
+    animation: fadeIn 0.5s ease-out;
+    border: 1px solid var(--border-color);
+}
+.auth-form h2 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2rem; /* Disesuaikan dari 2.2rem */
+}
+.auth-form .form-group label i {
+    margin-right: 0.6rem;
+    width: 20px;
+    color: var(--primary-color);
+}
+.field-icon.toggle-password { /* Toggle password visibility icon */
+    position: absolute;
+    right: 15px;
+    top: 50%; /* Coba pusatkan relatif ke input, bukan form-group */
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    cursor: pointer;
+    z-index: 2;
+    transition: color 0.3s ease;
+    /* Penyesuaian jika label ada, karena top:50% akan relatif ke .form-group */
+    /* Jika field-icon ada di dalam div yang hanya berisi input, ini akan baik */
+    /* Jika ada label di atas, mungkin perlu disesuaikan lagi: */
+    /* top: calc(50% + (tinggi label / 2) + margin-bottom label); */
+    /* Untuk kasus ini, karena label di atas input, kita atur top relatif ke inputnya. */
+    /* Anggap tinggi label + margin bawahnya sekitar 30px */
+    /* Jadi, posisi ikon = (tinggi input / 2) + tinggi label + margin label */
+    /* Mari kita asumsikan top: 70% dari .form-group itu untuk menyelaraskan dengan inputnya */
+}
+.form-group input[type="password"] + .field-icon.toggle-password {
+    top: calc(100% - 1.8em); /* Sesuaikan '1.8em' dengan tinggi setengah input + padding */
+}
+.field-icon.toggle-password:hover {
+    color: var(--primary-color);
+}
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem; /* Disesuaikan dari 1.8rem */
+    font-size: 0.9rem;
+}
+.remember-me {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+}
+.remember-me input[type="checkbox"] {
+    width: auto; /* Agar ukuran checkbox tidak 100% */
+    margin-right: 0.6rem;
+    accent-color: var(--primary-color);
+    border: 1px solid var(--border-color); 
+    background-color: var(--secondary-color);
+}
+.remember-me input[type="checkbox"]:focus {
+    box-shadow: 0 0 0 3px var(--focus-ring-color);
+}
+.forgot-password {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.forgot-password:hover {
+    color: #FF7043;
+    text-decoration: underline;
+}
+.btn-auth { /* Tombol utama di form auth */
+    width: 100%;
+    padding: 0.9rem; /* Disesuaikan dari 1rem */
+    background-color: var(--primary-color);
+    color: var(--accent-color-text);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 1.05rem; /* Disesuaikan dari 1.1rem */
+    margin-top: 1rem; /* Disesuaikan dari 1.5rem */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    box-shadow: var(--shadow-sm);
+}
+.btn-auth:hover {
+    background-color: #FF7043;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2), 0 0 10px rgba(255, 87, 34, 0.3);
+}
+.auth-footer {
+    margin-top: 2rem; /* Disesuaikan dari 2.5rem */
+    text-align: center;
+}
+.auth-link {
+    color: var(--text-secondary);
+    margin: 0.6rem 0;
+    font-size: 0.9rem;
+}
+.auth-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+.auth-link a:hover {
+    color: #FF7043;
+    text-decoration: underline;
+}
+
+/* === DASHBOARD (Admin, Penyiar, Owner) === */
+/* Layout Umum Dashboard */
+.admin-dashboard, .penyiar-dashboard, .owner-dashboard { /* Menambahkan .owner-dashboard */
+    display: grid;
+    grid-template-columns: 240px 1fr; /* Lebar sidebar disesuaikan dari 260px */
+    gap: 1.5rem; /* Jarak disesuaikan dari 2rem */
+    width: 100%;
+    flex-grow: 1;
+    min-height: calc(100vh - 80px - 20px - 20px); /* tinggi viewport - header - padding main atas - padding main bawah */
+}
+
+/* Sidebar Dashboard */
+.sidebar {
+    background-color: var(--card-bg);
+    padding: 1.5rem 1rem; /* Padding disesuaikan */
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15); /* Shadow lebih halus */
+    height: 100%; /* Sidebar mengisi tinggi parent .dashboard */
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+.sidebar h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 1.5rem; /* Disesuaikan */
+    font-size: 1.4rem; /* Disesuaikan */
+    text-align: center;
+    padding-bottom: 1rem; /* Disesuaikan */
+    border-bottom: 1px solid var(--border-color);
+}
+.sidebar ul {
+    list-style: none;
+    padding-left: 0; /* Reset padding ul */
+    flex-grow: 1; 
+}
+.sidebar li {
+    margin-bottom: 0.4rem; /* Disesuaikan */
+}
+.sidebar li a {
+    display: flex; 
+    align-items: center;
+    padding: 0.8rem 1rem; /* Padding tautan disesuaikan */
+    color: var(--text-secondary); 
+    text-decoration: none;
+    border-radius: 6px; /* Radius lebih kecil */
+    transition: all 0.25s ease; /* Transisi lebih cepat */
+    font-weight: 500;
+    font-size: 0.95rem; /* Ukuran font menu */
+    position: relative; 
+}
+.sidebar li a::before { 
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 3px; /* Indikator lebih tipis */
+    height: 65%; /* Tinggi indikator */
+    background-color: var(--primary-color);
+    border-radius: 0 2px 2px 0;
+    transition: transform 0.25s ease;
+}
+.sidebar li a:hover {
+    background-color: var(--hover-color);
+    color: var(--text-color);
+}
+.sidebar li a:hover::before {
+    transform: translateY(-50%) scaleY(1);
+}
+.sidebar li a i {
+    margin-right: 0.8rem; /* Jarak ikon disesuaikan */
+    width: 20px; 
+    text-align: center;
+    font-size: 1rem; /* Ukuran ikon disesuaikan */
+    color: var(--text-secondary); 
+    transition: color 0.25s ease;
+}
+.sidebar li a:hover i {
+    color: var(--primary-color);
+}
+.sidebar li.active a {
+    background-color: var(--primary-color); 
+    color: var(--accent-color-text); 
+    font-weight: 600;
+}
+.sidebar li.active a::before {
+    transform: translateY(-50%) scaleY(1);
+    background-color: var(--accent-color-text); 
+}
+.sidebar li.active a i {
+    color: var(--accent-color-text); 
+}
+.sidebar li.active a:hover {
+     background-color: #FF7043; 
+}
+
+/* Konten Utama Dashboard */
+.main-content {
+    padding: 2rem; /* Padding disesuaikan */
+    background-color: var(--secondary-color); /* Atau inherit */
+    height: 100%; /* Agar bisa discroll jika konten panjang */
+    overflow-y: auto;
+}
+.main-content::-webkit-scrollbar { width: 8px; } /* Scrollbar lebih tipis */
+.main-content::-webkit-scrollbar-track { background: var(--secondary-color); border-radius: 4px; }
+.main-content::-webkit-scrollbar-thumb { background: var(--hover-color); border-radius: 4px; }
+.main-content::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
+
+.main-content h2 { /* Judul utama di konten dashboard */
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 1.8rem; /* Disesuaikan */
+    font-size: 1.8rem; /* Disesuaikan */
+}
+
+/* Kartu Statistik di Dashboard */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* auto-fill dan minmax disesuaikan */
+    gap: 1.5rem; /* Jarak antar kartu disesuaikan */
+    margin-bottom: 2rem; /* Disesuaikan */
+}
+.stat-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem; /* Padding kartu disesuaikan */
+    border-radius: 10px; /* Radius kartu disesuaikan */
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    display: flex; /* Untuk tata letak internal yang lebih baik */
+    flex-direction: column;
+}
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+.stat-card h4 { /* Judul di kartu statistik */
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem; /* Disesuaikan */
+    font-size: 1rem; /* Disesuaikan */
+    font-weight: 600;
+}
+.stat-card .stat-number { /* Angka statistik */
+    font-size: 2.2rem; /* Disesuaikan */
+    font-weight: bold;
+    margin-bottom: 0.4rem; /* Disesuaikan */
+    color: var(--accent-color-text);
+    line-height: 1.1; /* Perbaiki line height jika angka terlalu besar */
+}
+.stat-card .stat-change { /* Teks perubahan statistik */
+    font-size: 0.9rem; /* Disesuaikan */
+    color: var(--text-secondary); /* Warna default */
+    margin-top: auto; /* Dorong ke bawah jika kartu punya tinggi berbeda */
+}
+.stat-card .stat-change.positive { color: var(--success-color); }
+.stat-card .stat-change.negative { color: var(--error-color); }
+.stat-card .stat-change i {
+    margin-right: 0.4rem;
+}
+.stat-card .text-error { /* Teks "Error" di kartu statistik */
+    color: var(--error-color);
+    font-weight: bold;
+    font-size: 1.8rem; /* Sesuaikan dengan .stat-number */
+}
+
+
+/* Tabel Umum (Aktivitas Terkini, Daftar User, dll.) */
+.recent-activity, .ad-bookings-report, .user-list-container /* Kelas umum untuk kontainer tabel */ { 
+    background-color: var(--card-bg);
+    padding: 1.5rem; /* Padding disesuaikan */
+    border-radius: 10px; /* Radius disesuaikan */
+    box-shadow: var(--shadow-md);
+    margin-top: 2rem; /* Jarak dari elemen di atas */
+    border: 1px solid var(--border-color);
+    overflow-x: auto; /* Scroll horizontal jika tabel lebar */
+}
+.recent-activity h3, .ad-bookings-report h3, .user-list-container h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-top: 0; /* Hapus margin atas jika sudah ada dari parent */
+    margin-bottom: 1.5rem; /* Jarak ke tabel */
+    font-size: 1.4rem; /* Ukuran judul tabel */
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.table-responsive { /* Wrapper untuk tabel agar bisa scroll jika perlu */
+    overflow-x: auto;
+    width: 100%;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem; /* Ukuran font default tabel */
+}
+table th {
+    background-color: var(--hover-color); 
+    color: var(--accent-color-text);
+    padding: 0.8rem 1rem; /* Padding header tabel */
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9em; /* Relatif ke font-size table */
+    text-transform: uppercase; /* Opsional */
+    border-bottom: 2px solid var(--primary-color); 
+}
+table td {
+    padding: 0.8rem 1rem; /* Padding sel tabel */
+    border-bottom: 1px solid var(--border-color-light); /* Border lebih halus antar baris */
+    color: var(--text-secondary);
+    transition: background-color 0.2s ease;
+    vertical-align: middle; /* Selaraskan konten sel secara vertikal */
+}
+table tr:hover td {
+    background-color: var(--hover-color-table); /* Variabel baru untuk hover baris tabel */
+    color: var(--text-color);
+}
+table tr:last-child td {
+    border-bottom: none;
+}
+
+/* === HALAMAN JADWAL (Publik) === */
+.schedule-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 1rem; /* Padding kiri-kanan ditambahkan */
+}
+.schedule-container h1 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2.5rem; /* Disesuaikan */
+}
+.schedule-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem; /* Jarak antar tombol filter */
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    position: sticky;
+    top: 80px; /* Di bawah header fixed */
+    background-color: var(--secondary-color); /* Agar tidak transparan saat sticky */
+    padding: 1rem 0.5rem; /* Padding filter */
+    z-index: 900;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+.filter-btn {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.6rem 1.3rem; /* Padding tombol filter */
+    border-radius: 25px; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.9rem; /* Ukuran font tombol filter */
+}
+.filter-btn:hover {
+    background-color: var(--hover-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: var(--accent-color-text);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(255, 87, 34, 0.3);
+}
+.schedule-day-header { /* Judul hari di halaman jadwal publik */
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin: 2.5rem 0 1.5rem; /* Margin disesuaikan */
+    padding-bottom: 0.8rem; /* Padding bawah disesuaikan */
+    border-bottom: 2px solid var(--primary-color);
+    font-size: 1.8rem; /* Ukuran font disesuaikan */
+}
+.program-card { /* Kartu program di halaman jadwal publik */
+    background-color: var(--card-bg);
+    border-radius: 10px; /* Disesuaikan */
+    padding: 1.5rem; /* Disesuaikan */
+    margin-bottom: 1.5rem; /* Disesuaikan */
+    display: flex;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid transparent; /* Indikator hover lebih tipis */
+}
+.program-card:hover {
+    transform: translateY(-6px) translateX(3px); /* Efek hover lebih halus */
+    box-shadow: var(--shadow-lg);
+    border-left-color: var(--primary-color);
+}
+.program-time {
+    width: 150px; /* Lebar area waktu disesuaikan */
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.1rem; /* Ukuran font waktu disesuaikan */
+    padding-right: 1.5rem; /* Jarak ke info program */
+    flex-shrink: 0;
+    display: flex; 
+    align-items: center; /* Selaraskan ikon jam jika ada */
+}
+.program-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.program-info h3 {
+    font-family: var(--font-heading);
+    margin-top: 0;
+    margin-bottom: 0.6rem; /* Jarak judul ke deskripsi */
+    color: var(--accent-color-text);
+    font-size: 1.4rem; /* Ukuran judul program */
+}
+.program-desc {
+    color: var(--text-secondary);
+    margin-bottom: 0.8rem; /* Jarak deskripsi ke penyiar/tombol */
+    font-size: 0.9rem; /* Ukuran font deskripsi */
+    line-height: 1.5;
+}
+.program-penyiar {
+    color: var(--text-secondary);
+    font-size: 0.85rem; /* Ukuran font penyiar */
+    margin-bottom: 0.8rem; /* Jarak ke tombol jika ada */
+    display: inline-flex;
+    align-items: center;
+}
+.program-penyiar i {
+    margin-right: 6px; /* Jarak ikon penyiar */
+    color: var(--accent-color-bright); 
+}
+.program-reminder-btn { /* Tombol ingatkan saya */
+    background-color: var(--primary-color);
+    color: var(--accent-color-text);
+    border: none;
+    padding: 0.6rem 1.2rem; /* Padding tombol */
+    border-radius: 20px; /* Radius tombol */
+    cursor: pointer;
+    font-size: 0.85rem; /* Ukuran font tombol */
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px; /* Jarak ikon dan teks di tombol */
+    margin-top: auto; /* Dorong tombol ke bawah jika konten di atasnya pendek */
+    text-decoration: none;
+    align-self: flex-start;
+}
+.program-reminder-btn:hover {
+    background-color: #FF7043;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 3px 7px rgba(0,0,0,0.2);
+}
+.program-reminder-btn i {
+    font-size: 0.9em; /* Ukuran ikon di tombol */
+    line-height: 1;
+}
+.program-reminder-btn:disabled {
+    background-color: var(--text-secondary);
+    color: var(--card-bg);
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+
+/* === DASHBOARD PENYIAR (penyiar/schedule.php, penyiar/manage_ads.php) === */
+/* Style spesifik untuk halaman jadwal penyiar (penyiar/schedule.php) */
+.penyiar-dashboard .main-content h2 { /* Judul utama di halaman penyiar */
+    color: var(--primary-color);
+    margin-bottom: 1.5rem; /* Disesuaikan */
+}
+.schedule-day-header-penyiar { /* Header hari di jadwal penyiar */
+    color: var(--primary-color);
+    margin-top: 2rem; /* Disesuaikan */
+    margin-bottom: 1rem; /* Disesuaikan */
+    padding-bottom: 0.8rem; /* Disesuaikan */
+    border-bottom: 2px solid var(--primary-color);
+    font-size: 1.5em; /* Disesuaikan */
+    display: flex;
+    align-items: center;
+}
+.schedule-day-header-penyiar i {
+    margin-right: 0.8rem; /* Disesuaikan */
+}
+.program-card-penyiar { /* Kartu program di jadwal penyiar */
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1rem 1.25rem; /* Padding disesuaikan */
+    margin-bottom: 1rem; /* Jarak antar kartu */
+    box-shadow: var(--shadow-sm); /* Shadow lebih halus */
+    border-left: 4px solid var(--primary-color); /* Indikator */
+}
+.program-time-penyiar {
+    font-weight: bold;
+    color: var(--accent-color-bright); /* Menggunakan variabel warna lain */
+    font-size: 1.05em; /* Disesuaikan */
+    margin-bottom: 0.5rem; /* Jarak ke info */
+    display: flex;
+    align-items: center;
+}
+.program-time-penyiar i {
+    margin-right: 0.5rem; /* Disesuaikan */
+    color: var(--primary-color);
+}
+.program-info-penyiar h4 {
+    font-size: 1.2em; /* Disesuaikan */
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 0.3rem; /* Jarak ke deskripsi */
+}
+.program-desc-penyiar {
+    font-size: 0.9em; /* Disesuaikan */
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Style untuk halaman manage_ads.php (Penyiar) & ads.php (Admin) */
+/* Ini juga bisa berlaku untuk pesan_iklan.php jika strukturnya mirip */
+.preserve-whitespace { /* Untuk naskah iklan agar format teks terjaga */
+    white-space: pre-wrap; 
+    word-wrap: break-word;
+}
+.user-rejection-reason { /* Alasan penolakan dari user */
+    color: var(--error-color);
+    font-style: italic;
+    font-size: 0.85em; /* Disesuaikan */
+    display: block; /* Agar menempati baris sendiri jika panjang */
+    margin-top: 0.3rem;
+}
+.file-download-link {
+    text-decoration: none;
+    color: var(--accent-color-bright);
+    font-size: 0.9em;
+    display: inline-flex; /* Agar ikon dan teks sejajar */
+    align-items: center;
+    gap: 0.3rem;
+}
+.file-download-link:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+.file-download-link i {
+    /* margin-right: 4px; Sudah dihandle gap */
+}
+/* Status styling untuk ad_bookings (digunakan di admin/ads.php & penyiar/manage_ads.php) */
+/* Warna-warna ini bisa disesuaikan dengan variabel :root Anda */
+.status-pending-admin-confirmation { color: var(--warning-color); font-weight: bold; }
+.status-pending-broadcaster-creation { color: var(--info-color-alt); font-weight: bold; } /* Oranye */
+.status-pending-user-confirmation { color: var(--cyan-color); font-weight: bold; } /* Cyan/Teal */
+.status-confirmed-by-admin, .status-confirmed-by-user { color: var(--success-color); font-weight: bold; }
+.status-aired { color: var(--info-color); font-weight: bold; } /* Biru Info */
+.status-rejected-admin, .status-revision-needed-by-user, .status-revision-needed-by-admin { color: var(--error-color); font-weight: bold; }
+.status-cancelled { color: var(--secondary-dark-color); font-weight: bold; }
+
+
+/* === FOOTER === */
+footer {
+    background-color: var(--card-bg); 
+    padding: 3rem 2rem 1.5rem; /* Padding disesuaikan */
+    color: var(--text-secondary);
+    margin-top: auto;
+    border-top: 3px solid var(--primary-color);
+}
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Disesuaikan */
+    gap: 2rem; /* Disesuaikan */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.footer-section h4 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 1.2rem; /* Disesuaikan */
+    font-size: 1.3rem; /* Disesuaikan */
+}
+.footer-section p {
+    margin: 0.4rem 0; /* Disesuaikan */
+    line-height: 1.6; /* Disesuaikan */
+    font-size: 0.9rem; /* Disesuaikan */
+}
+.footer-section i {
+    margin-right: 0.7rem; /* Disesuaikan */
+    width: 18px; /* Disesuaikan */
+    color: var(--primary-color);
+    text-align: center; 
+}
+.footer-section ul { 
+    list-style: none;
+    padding-left: 0;
+}
+.footer-section ul li {
+    margin-bottom: 0.4rem; /* Disesuaikan */
+}
+.footer-section a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.footer-section a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+.social-icons {
+    margin-top: 1.2rem; /* Disesuaikan */
+    display: flex; 
+    gap: 0.8rem; /* Disesuaikan */
+}
+.social-icons a {
+    color: var(--text-secondary);
+    font-size: 1.6rem; /* Disesuaikan */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-icons a:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 2.5rem; /* Disesuaikan */
+    padding-top: 1.5rem; /* Disesuaikan */
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem; /* Disesuaikan */
+}
+
+
+/* === ALERT & MODAL STYLES === */
+/* Alert Messages */
+.alert {
+    padding: 1rem 1.2rem; /* Padding disesuaikan */
+    margin-bottom: 1.5rem; /* Jarak bawah disesuaikan */
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid transparent;
+    display: flex; /* Untuk alignment ikon dan teks */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.alert i { /* Ikon di dalam alert */
+    font-size: 1.1em; /* Ukuran ikon relatif */
+}
+.alert-error {
+    background-color: rgba(207, 102, 121, 0.1); /* Background lebih soft */
+    color: var(--error-color);
+    border-color: rgba(207, 102, 121, 0.3); /* Border lebih soft */
+}
+.alert-success {
+    background-color: rgba(102, 187, 106, 0.1); /* Background lebih soft */
+    color: var(--success-color);
+    border-color: rgba(102, 187, 106, 0.3); /* Border lebih soft */
+}
+.alert-warning { /* Style untuk alert warning jika belum ada */
+    background-color: rgba(255, 193, 7, 0.1);
+    color: var(--warning-color);
+    border-color: rgba(255, 193, 7, 0.3);
+}
+.alert-warning strong { /* Jika ada strong di dalam alert warning */
+     color: #e0a800; /* Warna bold lebih gelap */
+}
+
+
+/* Modal Umum (untuk Naskah Iklan, Form, Custom Alert) */
+.modal, .custom-modal-overlay {
+    display: none; 
+    position: fixed;
+    z-index: 1000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7); /* Latar lebih gelap dari sebelumnya */
+    padding-top: 50px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s; 
+}
+.modal.show, .custom-modal-overlay.show { /* Kelas .show untuk menampilkan modal */
+    display: flex; /* Menggunakan flex untuk memusatkan .modal-content */
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+.modal-content, .custom-modal-content { 
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    /* margin: 5% auto; Dihapus, flexbox di .modal.show akan memusatkan */
+    padding: 25px 30px; /* Padding disesuaikan */
+    border: 1px solid var(--border-color);
+    width: 90%; 
+    max-width: 650px; /* Max width disesuaikan dari 700px/420px */
+    border-radius: 10px; /* Radius disesuaikan */
+    position: relative; 
+    box-shadow: var(--shadow-lg);
+    animation: animatetop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animasi lebih smooth */
+    /* Untuk custom-modal-content (alert) */
+    transform: scale(0.95) translateY(-10px);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+}
+.modal.show .modal-content, 
+.custom-modal-overlay.show .custom-modal-content {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+@keyframes animatetop { 
+    from {top: -200px; opacity: 0; transform: scale(0.8);} /* Animasi dari atas dan skala kecil */
+    to {top: 0; opacity: 1; transform: scale(1);} 
+}
+.close-button { 
+    color: var(--text-secondary);
+    float: right; /* Atau gunakan position absolute */
+    font-size: 1.8rem; /* Disesuaikan */
+    font-weight: bold; 
+    position: absolute; 
+    top: 10px; /* Disesuaikan */
+    right: 15px; /* Disesuaikan */
+    line-height: 1; /* Agar tombol close tidak terlalu tinggi */
+}
+.close-button:hover, .close-button:focus { 
+    color: var(--primary-color);
+    text-decoration: none; 
+    cursor: pointer; 
+}
+/* Konten spesifik di dalam modal */
+.modal-content h4, .custom-modal-content h4 { /* Judul di modal */
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 1.2rem; /* Disesuaikan */
+    font-size: 1.5rem; /* Disesuaikan */
+}
+.modal-content p, .custom-modal-content p { /* Paragraf di modal */
+    margin-bottom: 1.5rem; /* Disesuaikan */
+    font-size: 1rem; /* Disesuaikan */
+    line-height: 1.6;
+    color: var(--text-secondary); /* Atau --text-color jika ingin lebih terang */
+}
+/* Tombol OK di Custom Alert Modal */
+#custom-alert-ok-btn {
+    padding: 0.8rem 1.8rem; /* Padding disesuaikan */
+    font-size: 0.95rem; /* Ukuran font disesuaikan */
+    margin-top: 0.5rem; /* Margin atas jika ada pesan panjang */
+    /* Style lain diwarisi dari .btn-auth */
+}
+
+/* === UTILITY & BADGES === */
+.sr-only { /* Sembunyikan visual, tapi tetap ada untuk screen reader */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+.main-content-centered { /* Konten yang dipusatkan */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    width: 100%;
+    text-align: center; 
+    flex-grow: 1; /* Agar mengisi ruang jika konten utama pendek */
+}
+.section-mb { /* Margin bawah antar seksi di dashboard */
+    margin-bottom: 2rem; /* Disesuaikan dari 30px */
+}
+.card-bg { /* Kelas umum untuk card, jika tidak menggunakan .form-container.card-bg atau .stat-card */
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+
+/* Badge Umum */
+.badge {
+    display: inline-block;
+    padding: .35em .65em; /* Padding disesuaikan */
+    font-size: .78em; /* Ukuran font disesuaikan */
+    font-weight: 600; /* Disesuaikan */
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .3rem; /* Radius disesuaikan */
+    color: var(--accent-color-text); /* Warna teks default badge */
+}
+/* Badge spesifik (dari diskusi sebelumnya) */
+.badge.badge-info { background-color: var(--accent-color-bright); color: var(--secondary-color); } 
+.badge.badge-success { background-color: var(--success-color); }
+.badge.badge-warning { background-color: var(--warning-color); color: var(--secondary-color); } /* Teks gelap untuk warning */
+.badge.badge-danger { background-color: var(--error-color); }
+
+/* Badge untuk status iklan (dari diskusi Owner Dashboard) */
+.badge.status-pending { background-color: var(--warning-color); color: var(--secondary-color); }
+.badge.status-approved { background-color: var(--success-color); }
+.badge.status-active { background-color: var(--info-color); }
+.badge.status-rejected { background-color: var(--error-color); }
+.badge.status-completed { background-color: var(--secondary-dark-color); }
+.badge.status-cancelled { background-color: var(--secondary-dark-color); } /* Bisa sama dengan completed atau beda */
+/* Kelas status dari ad_bookings (misal: status-pending-admin-confirmation) sudah di-style di atas */
+
+
+/* Tombol Aksi di Tabel (Edit/Delete) */
+.actions .btn-action {
+    margin: 0 4px 4px 0; /* Margin antar tombol aksi */
+    padding: 5px 9px; /* Padding tombol aksi disesuaikan */
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Radius disesuaikan */
+    color: var(--accent-color-text);
+    transition: opacity 0.2s ease, transform 0.2s ease; /* Transisi lebih cepat */
+    font-size: 0.8rem; /* Ukuran font tombol aksi */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.actions .btn-action:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+.actions .btn-action i { /* Ikon di tombol aksi */
+    /* Tidak perlu style khusus jika gap sudah mengatur jarak */
+}
+.btn-edit { background-color: var(--success-color); }
+.btn-delete { background-color: var(--error-color); }
+.btn-delete:disabled { background-color: var(--border-color); cursor: not-allowed; opacity: 0.6; }
+.btn-view-script { background-color: var(--info-color); color: white; } /* Tombol lihat naskah/script */
+.btn-view-script:hover { background-color: #138496; /* Warna hover spesifik */ }
+
+
+/* Style untuk role pengguna di tabel user */
+.role-admin { color: var(--primary-color); font-weight: bold; }
+.role-penyiar { color: var(--accent-color-bright); font-weight: bold; }
+.role-user { color: var(--text-secondary); font-weight: normal; /* Pastikan user tidak bold jika tidak diinginkan */ }
+.role-owner { color: var(--warning-color); font-weight: bold; } /* Warna untuk owner */
+
+/* Animasi Fade-In */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); } /* Transform lebih halus */
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* === RESPONSIVE STYLES === */
+@media (max-width: 992px) { /* Tablet */
+    .features .feature {
+        width: 48%;
+    }
+    .streaming-container {
+        grid-template-columns: 1fr; /* Konten streaming menumpuk */
+        padding: 1.5rem; /* Padding disesuaikan */
+    }
+    .admin-dashboard, .penyiar-dashboard, .owner-dashboard {
+        grid-template-columns: 200px 1fr; /* Sidebar lebih kecil */
+        gap: 1rem;
+    }
+    nav ul li a {
+        padding: 1.5rem 1rem; 
+    }
+    nav ul li a::after {
+        left: 1rem;
+        right: 1rem;
+    }
+    .hero h1 { font-size: 3rem; }
+    .hero p { font-size: 1.2rem; }
+    .main-content { padding: 1.5rem; }
+}
+
+@media (max-width: 768px) { /* Mobile Lanskap & Tablet Potrait Kecil */
+    body { padding-top: 70px; }
+    header { height: 70px; padding: 0 1rem;}
+    .logo { height: 35px; }
+
+    .menu-toggle { display: block; }
+    nav ul {
+        position: fixed;
+        top: 70px; /* Sesuaikan dengan tinggi header */
+        left: -100%; 
+        width: 80%; 
+        max-width: 280px; /* Max width menu mobile */
+        background-color: var(--card-bg);
+        flex-direction: column;
+        padding: 1rem 0; /* Padding atas/bawah menu mobile */
+        display: flex; 
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+        z-index: 999;
+        border-right: 1px solid var(--border-color);
+        box-shadow: 3px 0 10px rgba(0,0,0,0.15);
+        transition: left 0.3s ease-in-out;
+    }
+    nav ul.show { left: 0; }
+    nav ul li { width: 100%; margin-bottom: 0; } /* Hapus margin-bottom jika border sudah ada */
+    nav ul li a {
+        padding: 0.9rem 1.2rem; /* Padding item menu mobile */
+        border-bottom: 1px solid var(--hover-color); /* Border lebih halus */
+    }
+    nav ul li:last-child a { border-bottom: none; }
+    nav ul li a::after { display: none; }
+    nav ul li a:hover,
+    nav ul li a.active {
+        background-color: var(--hover-color); 
+        color: var(--primary-color);
+    }
+
+    .hero { height: calc(100vh - 70px); padding: 1rem; } /* Tambah padding */
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1rem; }
+    .btn-live { padding: 0.8rem 2rem; font-size: 1rem; }
+
+    .features { flex-direction: column; padding: 2rem 1rem; }
+    .feature { width: 100%; margin: 0.8rem 0; padding: 1.5rem; }
+
+    .player { flex-direction: column; gap: 1rem; padding: 1.5rem; }
+    .player .player-controls { width: 100%; justify-content: center; }
+    .player .song-info { width: 100%; justify-content: center; text-align: center; flex-direction: column; }
+    .player .album-cover { margin-right: 0; margin-bottom: 1rem; }
+
+    .admin-dashboard, .penyiar-dashboard, .owner-dashboard {
+        grid-template-columns: 1fr; /* Sidebar dan konten menumpuk */
+    }
+    .sidebar { /* Sidebar menjadi menu slide-in di mobile */
+        position: fixed;
+        left: -100%; 
+        top: 70px; 
+        width: 80%;
+        max-width: 260px; /* Max width sidebar mobile */
+        height: calc(100vh - 70px);
+        z-index: 990; 
+        transition: left 0.3s ease-in-out;
+        /* Hapus box-shadow jika tidak ingin shadow saat overlay */
+    }
+    .sidebar.show { /* Untuk toggle via JavaScript */
+        left: 0;
+        box-shadow: 3px 0 10px rgba(0,0,0,0.15); /* Tambah shadow saat tampil */
+    }
+    /* Tambahkan overlay saat sidebar mobile aktif */
+    body.sidebar-open-overlay::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 980; /* Di bawah sidebar tapi di atas konten */
+    }
+
+
+    .schedule-filter { top: 70px; padding: 0.8rem 0.5rem; gap: 0.5rem; }
+    .filter-btn { padding: 0.6rem 1rem; font-size: 0.85rem; }
+
+    .program-card { flex-direction: column; gap: 0.8rem; padding: 1.2rem; }
+    .program-time { width: 100%; margin-bottom: 0.3rem; padding-right: 0; font-size: 1rem; justify-content: flex-start; }
+    .program-info h3 { font-size: 1.2rem; }
+
+    .footer-content { padding: 0 1rem; gap: 1.5rem; }
+    .footer-section, .footer-section ul { text-align: center; }
+    .social-icons { justify-content: center; }
+    
+    .auth-form { padding: 1.5rem; } /* Padding form auth lebih kecil */
+    .main-content { padding: 1.2rem; } /* Padding konten utama lebih kecil */
+}
+
+@media (max-width: 480px) { /* Mobile Potrait Kecil */
+    body { padding-top: 60px; }
+    header { height: 60px; padding: 0 0.8rem;}
+    .logo { height: 30px; }
+    nav ul, .sidebar, nav ul.show, .sidebar.show { top: 60px; height: calc(100vh - 60px); } /* Sesuaikan top & height */
+
+    .auth-form h2 { font-size: 1.6rem; }
+    .remember-forgot { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+
+    .hero h1 { font-size: 1.6rem; }
+    .hero p { font-size: 0.9rem; }
+    .btn-live { padding: 0.7rem 1.6rem; font-size: 0.9rem; }
+
+    .player { padding: 1rem; }
+    .streaming-player, .chat-container, .song-request { padding: 1.2rem; }
+    .chat-messages { height: 200px; padding: 0.8rem; }
+
+    .now-playing-info { flex-direction: column; text-align: center; padding: 1rem; gap: 0.5rem;}
+    .now-playing-info img { width: 80px; height: 80px; margin-right: 0; margin-bottom: 0.8rem;}
+    .now-playing-info h3 { font-size: 1.2rem; }
+
+    main { padding: 10px; }
+    .main-content { padding: 1rem; }
+    .stat-card { padding: 1.2rem; }
+    .stat-number { font-size: 1.8rem; }
+    .recent-activity, .ad-bookings-report, .song-requests, .current-show { padding: 1rem; }
+    table th, table td { padding: 0.6rem 0.5rem; font-size: 0.8rem; }
+
+    .schedule-filter { top: 60px; }
+    .program-card { padding: 1rem; }
+}
+
+/* File: elmira_radio/assets/css/style.css */
+/* ... (CSS Anda yang sudah ada) ... */
+
+/* File: elmira_radio/assets/css/style.css */
+/* ... (CSS Anda yang sudah ada di atasnya) ... */
+
+/* File: elmira_radio/assets/css/style.css */
+/* ... (CSS Anda yang sudah ada) ... */
+
+/* HALAMAN PROFIL PENYIAR (penyiar.php) */
+.penyiar-profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+.penyiar-profile-container h1 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2.5rem;
+}
+.penyiar-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+}
+@media (min-width: 600px) {
+    .penyiar-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 992px) {
+    .penyiar-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.penyiar-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.penyiar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+.penyiar-card-image { /* Untuk gambar asli */
+    width: 100%;
+    height: 220px;
+    background-color: var(--hover-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.penyiar-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.penyiar-card-image-placeholder { /* Untuk ikon placeholder */
+    width: 100%;
+    height: 220px;
+    background-color: var(--hover-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.penyiar-card-image-placeholder i {
+    font-size: 5rem;
+    color: var(--text-secondary);
+}
+.penyiar-card-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.penyiar-card-info h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+.penyiar-card-info h4 {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    border-top: 1px solid var(--border-color-light);
+    padding-top: 1rem;
+}
+.penyiar-program-list {
+    list-style: none;
+    padding-left: 0;
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+.penyiar-program-list li {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    padding-left: 1.2em;
+    position: relative;
+}
+.penyiar-program-list li::before {
+    content: "\f005"; 
+    font-family: "Font Awesome 6 Free"; 
+    font-weight: 900; 
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 1px;
+}
+.penyiar-program-list li strong {
+    color: var(--text-color);
+    display: block;
+}
+.penyiar-program-list li small {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+/* Style untuk tabel di admin/users.php agar menampilkan foto profil */
+.table-profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+}
+.table-profile-icon {
+    font-size: 30px; /* Sesuaikan ukuran ikon placeholder */
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* ... (sisa CSS Anda) ... */
+/* ... (CSS Anda yang lain) ... */
